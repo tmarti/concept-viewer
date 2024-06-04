@@ -19,7 +19,7 @@ yarn dev
 
 Now you can navigate to http://localhost:5173/
 
-## User manual
+## Usage
 
 1. Enter your OpenAI API key in the input field on the top (only used for calls to the OpenAI embedding's API)
 
