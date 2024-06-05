@@ -1,9 +1,7 @@
 export const CardHoveredConcept = ({
   text,
-  color,
 }: {
   text: string,
-  color: string,
 }) => {
   return (
     <h4 style={{
