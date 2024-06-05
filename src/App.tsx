@@ -59,7 +59,6 @@ function App() {
           {hoveredIndex != -1 &&
             <CardHoveredConcept
               text={`${concepts[hoveredIndex].label}`}
-              color={concepts[hoveredIndex].color}
             />
           }
         </div>
