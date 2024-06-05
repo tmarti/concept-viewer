@@ -45,9 +45,9 @@ export const Panel3D = ({
         {...props}
         ref={mesh}
         scale={active ? 1.5 : 1}
-        onClick={(event) => setActive(!active)}
-        onPointerOver={(event) => {setHover(true); onHoverConcept(props.index);} }
-        onPointerOut={(event) => {setHover(false); onHoverConcept(-1);}}>
+        onClick={() => setActive(!active)}
+        onPointerOver={() => {setHover(true); onHoverConcept(props.index);} }
+        onPointerOut={() => {setHover(false); onHoverConcept(-1);}}>
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial color={hovered ? 'hotpink' : (props.color || 'orange')} />
       </mesh>
