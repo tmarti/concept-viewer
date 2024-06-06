@@ -54,7 +54,7 @@ export const Panel3D = ({
     )
   }
   return (
-    <Canvas id="three-canvas">
+    <Canvas id="three-canvas" className='Panel3D'>
       {/* PerspectiveCamera from drei automatically becomes the default camera */}
       <PerspectiveCamera
         makeDefault

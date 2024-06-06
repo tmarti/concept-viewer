@@ -9,6 +9,7 @@ export const ListItemConcept = ({
   return (
     <div style={{ display: 'flex', alignItems: 'center', padding: '3px' }}>
         <span
+            className="HiddenOnMobile"
             style={{
                 height: '20px', // Ensures the circle is 20px in diameter
                 width: '20px',  // Matching width and height for a perfect circle

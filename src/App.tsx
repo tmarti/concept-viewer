@@ -33,14 +33,6 @@ function App() {
     setConcepts(concepts.slice());
   };
 
-
-  setTimeout(
-    () => {
-      (document.getElementById('three-canvas') as HTMLCanvasElement).style.height = '100%';
-    },
-    400
-  )
-
   return (
     <>
       <ItemOpenAiKey/>
@@ -56,11 +48,6 @@ function App() {
           <PanelMyConcept
             onChangeMyConcept={fnChangeCustomConcept}
           />
-          {hoveredIndex != -1 &&
-            <CardHoveredConcept
-              text={`${concepts[hoveredIndex].label}`}
-            />
-          }
         </div>
         <div id="right-pane">
           <Panel3D
@@ -69,6 +56,7 @@ function App() {
             onHoverConcept={setHoveredIndex}/>
         </div>
       </div>
+      {hoveredIndex != -1 && <CardHoveredConcept text={`${concepts[hoveredIndex].label}`}/>}
     </>
   )
 }

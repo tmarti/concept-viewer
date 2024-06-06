@@ -1,10 +1,10 @@
 export const ItemOpenAiKey = () => {
   return (
-    <div style={{ padding: '3px', textAlign: 'left' }}>
+    <div className="ItemOpenAiKey">
         OpenAI API key&nbsp;
         <input
           id='llm-key'
-          style={{width: '400px'}}
+          style={{width: '200px'}}
           type='password'
         />
     </div>

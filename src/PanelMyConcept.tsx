@@ -6,7 +6,7 @@ export const PanelMyConcept = ({
   onChangeMyConcept: (concept: string) => void,
 }) => {
   return (
-    <>
+    <div className='PanelMyConcept'>
         <h3 style={{textAlign:'left' }}># Your Concept</h3>
         <h2>
           <ListItemConcept
@@ -23,7 +23,7 @@ export const PanelMyConcept = ({
             Represent Concept
             </button>
         </div>
-    </>
+    </div>
   );
 
 }

@@ -1,7 +1,7 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
 }
 
@@ -41,7 +41,7 @@
   color: #888;
 }
 
-#main-div {
+/* #main-div {
   display: flex;
   width: 100%;
   height: 100%;
@@ -56,4 +56,128 @@
   flex-grow: 1;
   margin: 5px;
 }
+ */
 
+
+#main-div {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+}
+
+#left-pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 20%; /* 20% of horizontal space as per your diagram */
+  border: 1px solid lightgray;
+  padding: 0 2rem;
+}
+
+#right-pane {
+  height: 100%;
+  width: 80%; /* 80% of horizontal space as per your diagram */
+}
+
+.PanelConceptCategories {
+  height: 70%; /* 70% of vertical space */
+  overflow-y: scroll; /* Enable vertical scrolling */
+}
+
+.PanelMyConcept {
+  height: 30%; /* 30% of vertical space */
+}
+
+.Panel3D {
+  height: 100%; /* 100% of vertical space */
+  width: 100%; /* Using full width of its container */
+  border: 1px solid lightgray;
+}
+
+.ItemOpenAiKey {
+  position: fixed; /* Fix position relative to the viewport */
+  bottom: 1rem; /* Align to the top of the viewport */
+  right: 1rem; /* Position at the center of the viewport */
+  /* transform: translateX(-50%); Shift left by half its width to center it */
+  width: auto; /* Auto width based on content */
+  z-index: 1000; /* Ensure it's above other content */
+  background: lightyellow;
+  padding: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
+.CardHoveredConcept {
+  position: fixed; /* Fix position relative to the viewport */
+  bottom: 1rem; /* Align to the top of the viewport */
+  left: calc(20% + 4rem); /* Position at the center of the viewport */
+  /* transform: translateX(-50%); Shift left by half its width to center it */
+  width: auto; /* Auto width based on content */
+  z-index: 1000; /* Ensure it's above other content */
+  background: lightyellow;
+  padding: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin-left: 1rem;
+}
+
+.HiddenOnMobile {
+  display: block;
+}
+
+.SelectConcept {
+  max-width: 100%;
+  /* z-index: 2000;; */
+  margin: 1rem 0;
+}
+
+/* Mobile styles using a media query */
+@media (max-width: 600px) { /* Adjust breakpoint as needed */
+  #main-div {
+    flex-direction: column; /* Stack vertically for mobile */
+  }
+
+  #left-pane, #right-pane {
+    width: 100%; /* Full width on mobile */
+  }
+
+  #right-pane {
+    height: 50%;
+  }
+
+  #left-pane {
+    height: 50%;
+    padding: 0;
+  }
+
+  .PanelConceptCategories {
+    width: calc(100% - 2rem);
+    padding: 0;
+    margin: 1rem;
+    height: 170px; /* 20% of vertical space */
+    margin-bottom: 0;
+  }
+
+  .PanelMyConcept {
+    width: 100%; /* Full width */
+    /* Height auto-adjusts based on content */
+    padding-bottom: 1rem;
+    padding: 0;
+    margin: 1rem;
+  }
+
+  .Panel3D {
+    height: 50%;
+    /* flex-grow: 1; Takes remaining space */
+    width: 100%; /* Full width */
+    height: unset;
+  }
+
+  .HiddenOnMobile {
+    display: none;
+  }
+
+  .SelectConcept {
+    max-width: 85%;
+  }
+}

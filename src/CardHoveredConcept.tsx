@@ -4,13 +4,8 @@ export const CardHoveredConcept = ({
   text: string,
 }) => {
   return (
-    <h4 style={{
-        border: '1px black solid',
-        borderRadius: '8px',
-        width: 'fit-content',
-        padding: '8px',
-    }}>
-        <em>{text}</em>
-    </h4>
+    <div className="CardHoveredConcept HiddenOnMobile">
+        <strong><em>{text}</em></strong>
+    </div>
   );
 }

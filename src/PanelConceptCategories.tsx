@@ -35,12 +35,14 @@ export const PanelConceptCategories = ({
   };
 
   return (
-    <>
-    <h3 style={{textAlign: 'left'}}># Categories</h3>
+    <div className='PanelConceptCategories'>
+        <h3 style={{textAlign: 'left'}}># Categories</h3>
         <Select 
             // ref={select}
+            className="SelectConcept"
             placeholder="pick a concept..."
             isSearchable={false}
+            menuPortalTarget={document.body}
             options={Object.keys(conceptCategories).map(
               x => {
                 return {
@@ -51,7 +53,7 @@ export const PanelConceptCategories = ({
             )}
             onChange={ev => onSelectionChange(ev?.value || "")}
         />
-        <h2 style={{height:'300px', overflow:'scroll'}}>
+        <h2 style={{height:'300px', overflow:'scroll'}} className="HiddenOnMobile">
             {concepts.map(x => (
                 <ListItemConcept
                   color={x.color}
@@ -67,7 +69,7 @@ export const PanelConceptCategories = ({
             Represent Category
           </button>
         </div>
-    </>
+    </div>
   );
 
 }
