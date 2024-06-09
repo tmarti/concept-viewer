@@ -7,12 +7,10 @@ export const PanelConceptCategories = ({
   conceptCategories,
   concepts,
   setConcepts,
-  onCalculateEmbeddings,
 }: {
   conceptCategories: ConceptCategoriesDto,
   concepts: ConceptDto[],
   setConcepts: (conceptCategories: ConceptDto[]) => void,
-  onCalculateEmbeddings: () => void,
 }) => {
 
   const onSelectionChange = (value:string) => {
@@ -36,11 +34,11 @@ export const PanelConceptCategories = ({
 
   return (
     <div className='PanelConceptCategories'>
-        <h3 style={{textAlign: 'left'}}># Categories</h3>
+        <h3 style={{textAlign: 'left'}} className='HiddenOnMobile'># Categories</h3>
         <Select 
             // ref={select}
             className="SelectConcept"
-            placeholder="pick a concept..."
+            placeholder="Select a category..."
             isSearchable={false}
             menuPortalTarget={document.body}
             options={Object.keys(conceptCategories).map(
@@ -51,7 +49,10 @@ export const PanelConceptCategories = ({
                 };
               }
             )}
-            onChange={ev => onSelectionChange(ev?.value || "")}
+            onChange={ev => {
+              onSelectionChange(ev?.value || "");
+              // setTimeout(onCalculateEmbeddings, 500);
+            }}
         />
         <h2 style={{height:'300px', overflow:'scroll'}} className="HiddenOnMobile">
             {concepts.map(x => (
@@ -64,11 +65,11 @@ export const PanelConceptCategories = ({
                 />
             ))}
         </h2>
-        <div style={{ textAlign: 'center'}} >
+        {/* <div style={{ textAlign: 'center'}} >
           <button onClick={onCalculateEmbeddings}>
             Represent Category
           </button>
-        </div>
+        </div> */}
     </div>
   );
 

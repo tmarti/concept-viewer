@@ -1,10 +1,11 @@
 export const ListItemConcept = ({
-    color, title, inputId, inputValue
+    color, title, inputId, inputValue, onChanged
 }: {
     color: string,
     title?:string,
     inputId: string,
     inputValue?:string,
+    onChanged?:(newValue: string) => void,
 }) => {
   return (
     <div style={{ display: 'flex', alignItems: 'center', padding: '3px' }}>
@@ -21,6 +22,7 @@ export const ListItemConcept = ({
         />
         &nbsp;
         <input
+            className='ConceptInput'
             style={{
             width: '180px',
             }}
@@ -28,6 +30,12 @@ export const ListItemConcept = ({
             value={inputValue}
             name="test"
             readOnly={!!inputValue}
+            placeholder=" Type your concept..."
+            onKeyDown={e => {
+                if (onChanged && e.key == 'Enter') {
+                    onChanged(e.currentTarget.value as string);
+                }
+            }}
         />
     </div>
   );

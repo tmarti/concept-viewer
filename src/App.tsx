@@ -12,7 +12,7 @@ import { ItemOpenAiKey } from './ItemOpenAiKey';
 function App() {
   let [embeddingModel] = useState(new EmbeddingModel());
   const [hoveredIndex, setHoveredIndex] = useState(-1);
-  const [concepts, setConcepts] = useState([] as ConceptDto[]);
+  const [concepts, _setConcepts] = useState([] as ConceptDto[]);
   const [spherePos, setSpherePos] = useState([0, 0, 0]);
 
   const fnChangeCustomConcept = async (value: string) => {
@@ -21,16 +21,20 @@ function App() {
     );
   };
 
-  const fnInitializeEmbeddingsBase = async () => {
+  const setConcepts = (c: ConceptDto[]) => {
+    fnInitializeEmbeddingsBase(c);
+  };
+
+  const fnInitializeEmbeddingsBase = async (c: ConceptDto[]) => {
     const positions = await embeddingModel.initializeProjection(
-      concepts.map(x => x.label)
+      c.map(x => x.label)
     );
 
-    concepts.map (x => {
+    c.map (x => {
       x.position = positions[x.index];
     });
 
-    setConcepts(concepts.slice());
+    _setConcepts(c.slice());
   };
 
   return (
@@ -43,7 +47,6 @@ function App() {
             conceptCategories={ConceptCategories}
             concepts={concepts}
             setConcepts={setConcepts}
-            onCalculateEmbeddings={fnInitializeEmbeddingsBase}
           />
           <PanelMyConcept
             onChangeMyConcept={fnChangeCustomConcept}
@@ -53,7 +56,8 @@ function App() {
           <Panel3D
             concepts={concepts}
             spherePos={spherePos}
-            onHoverConcept={setHoveredIndex}/>
+            onHoverConcept={setHoveredIndex}
+            onSelectConcept={setHoveredIndex}/>
         </div>
       </div>
       {hoveredIndex != -1 && <CardHoveredConcept text={`${concepts[hoveredIndex].label}`}/>}

@@ -4,7 +4,7 @@ export const CardHoveredConcept = ({
   text: string,
 }) => {
   return (
-    <div className="CardHoveredConcept HiddenOnMobile">
+    <div className="CardHoveredConcept">
         <strong><em>{text}</em></strong>
     </div>
   );

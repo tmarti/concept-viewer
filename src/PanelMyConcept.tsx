@@ -7,14 +7,15 @@ export const PanelMyConcept = ({
 }) => {
   return (
     <div className='PanelMyConcept'>
-        <h3 style={{textAlign:'left' }}># Your Concept</h3>
+        <h3 style={{textAlign: 'left'}} className='HiddenOnMobile'># Your concept</h3>
         <h2>
           <ListItemConcept
             color='black'
             inputId={`prompt-test`}
+            onChanged={onChangeMyConcept}
           />
         </h2>
-        <div style={{textAlign: 'center'}}>
+        <div style={{textAlign: 'center'}} className="HiddenOnMobile">
             <button onClick={() => {
                 onChangeMyConcept(
                   (document.getElementById(`prompt-test`) as HTMLInputElement).value

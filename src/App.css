@@ -27,11 +27,11 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
+} */
 
 .card {
   padding: 2em;
@@ -142,11 +142,11 @@
   }
 
   #right-pane {
-    height: 50%;
+    height: calc(100% - 12rem);
   }
 
   #left-pane {
-    height: 50%;
+    height: 12rem;
     padding: 0;
   }
 
@@ -154,8 +154,9 @@
     width: calc(100% - 2rem);
     padding: 0;
     margin: 1rem;
-    height: 170px; /* 20% of vertical space */
+    height: 4rem; /* 20% of vertical space */
     margin-bottom: 0;
+    margin-top: 2rem;
   }
 
   .PanelMyConcept {
@@ -164,11 +165,14 @@
     padding-bottom: 1rem;
     padding: 0;
     margin: 1rem;
+    height: 4rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
   }
 
   .Panel3D {
-    height: 50%;
-    /* flex-grow: 1; Takes remaining space */
+    /* height: 100%; */
+    /* flex-grow: 1; */
     width: 100%; /* Full width */
     height: unset;
   }
@@ -178,6 +182,28 @@
   }
 
   .SelectConcept {
-    max-width: 85%;
+    max-width: 100%;
   }
+
+  .ConceptInput {
+    height: 2rem;
+    font-size: 20px;
+    width: 90% !important;
+  }
+
+  .ItemOpenAiKey {
+    position: absolute; /* Fix position relative to the viewport */
+    width: 80%; /* Auto width based on content */
+    bottom: 1rem; /* Align to the top of the viewport */
+    left:50%;
+    transform: translateX(-50%);
+  }
+
+  .CardHoveredConcept {
+      position: absolute; /* Fix position relative to the viewport */
+      bottom: 6rem; /* Align to the top of the viewport */
+      left:50%;
+      transform: translateX(-50%);
+    }
+
 }

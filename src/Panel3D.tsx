@@ -28,10 +28,12 @@ function Sphere(props: any) {
 export const Panel3D = ({
   concepts,
   onHoverConcept,
+  onSelectConcept,
   spherePos,
 }: {
   concepts: ConceptDto[], 
   onHoverConcept: (index: number) => void,
+  onSelectConcept: (index: number) => void,
   spherePos: number[],
 }) => {
   function Box(props: any) {
@@ -45,7 +47,7 @@ export const Panel3D = ({
         {...props}
         ref={mesh}
         scale={active ? 1.5 : 1}
-        onClick={() => setActive(!active)}
+        onClick={() => {setActive(!active); onSelectConcept(props.index);} }
         onPointerOver={() => {setHover(true); onHoverConcept(props.index);} }
         onPointerOut={() => {setHover(false); onHoverConcept(-1);}}>
         <boxGeometry args={[1, 1, 1]} />
@@ -90,7 +92,7 @@ export const Panel3D = ({
       <AxisCylinder position={[0, 0, 0]} rotation={[0, 0, 0]} color="blue" />
         
       {/* Controls to rotate the scene */}
-      <OrbitControls />
+      <OrbitControls onChange={e => {onSelectConcept(-1);} }/>
     </Canvas>
   );
 
