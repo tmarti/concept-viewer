@@ -92,7 +92,7 @@ export const Panel3D = ({
       <AxisCylinder position={[0, 0, 0]} rotation={[0, 0, 0]} color="blue" />
         
       {/* Controls to rotate the scene */}
-      <OrbitControls onChange={e => {onSelectConcept(-1);} }/>
+      <OrbitControls onChange={() => {onSelectConcept(-1);} }/>
     </Canvas>
   );
 
