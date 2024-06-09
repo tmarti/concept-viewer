@@ -9,16 +9,35 @@ import { ConceptCategories } from './ConceptCategories';
 import EmbeddingModel from './llm';
 import { ItemOpenAiKey } from './ItemOpenAiKey';
 
+function dist(a: number[], b: number[]) {
+  return Math.hypot(a[0]-b[0], a[1]-b[1], a[2]-b[2]);
+}
+
 function App() {
   let [embeddingModel] = useState(new EmbeddingModel());
   const [hoveredIndex, setHoveredIndex] = useState(-1);
+  const [topIndexes, setTopIndexes] = useState([-1, -1, -1]);
   const [concepts, _setConcepts] = useState([] as ConceptDto[]);
   const [spherePos, setSpherePos] = useState([0, 0, 0]);
 
   const fnChangeCustomConcept = async (value: string) => {
-    setSpherePos(
-      await embeddingModel.calculateProjection(value)
-    );
+    const position = await embeddingModel.calculateProjection(value);
+
+    setSpherePos(position);
+
+    let distances: {index: number, distance: number}[] = [];
+
+    concepts.forEach(c => {
+      distances.push({
+        index: c.index,
+        distance: dist(position, c.position)
+      });
+    });
+
+    distances.sort((a, b) => a.distance - b.distance);
+
+    // setHoveredIndex(distances[0].index);
+    setTopIndexes(distances.map(x => x.index).slice(0, 3));
   };
 
   const setConcepts = (c: ConceptDto[]) => {
@@ -26,6 +45,8 @@ function App() {
   };
 
   const fnInitializeEmbeddingsBase = async (c: ConceptDto[]) => {
+    setTopIndexes([-1, -1, -1]);
+    
     const positions = await embeddingModel.initializeProjection(
       c.map(x => x.label)
     );
@@ -60,7 +81,8 @@ function App() {
             onSelectConcept={setHoveredIndex}/>
         </div>
       </div>
-      {hoveredIndex != -1 && <CardHoveredConcept text={`${concepts[hoveredIndex].label}`}/>}
+      {true !== true && hoveredIndex != -1 && <CardHoveredConcept text={`${concepts[hoveredIndex].label}`}/>}
+      {topIndexes[0] != -1 && <CardHoveredConcept text={`1. ${concepts[topIndexes[0]].label}\n2. ${concepts[topIndexes[1]].label}\n3. ${concepts[topIndexes[2]].label}`}/>}
     </>
   )
 }

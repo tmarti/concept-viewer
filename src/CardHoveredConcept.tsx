@@ -4,8 +4,8 @@ export const CardHoveredConcept = ({
   text: string,
 }) => {
   return (
-    <div className="CardHoveredConcept">
+    <pre className="CardHoveredConcept">
         <strong><em>{text}</em></strong>
-    </div>
+    </pre>
   );
 }

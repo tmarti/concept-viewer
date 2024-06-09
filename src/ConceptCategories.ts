@@ -104,5 +104,5 @@ export const ConceptCategories = {
   "Social rights": social_rights,
   "Abuse forms": abuse_forms,
   "Social areas": social_areas,
-  "All": all,
+  "All categories": all,
 } as ConceptCategoriesDto;
