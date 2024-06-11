@@ -27,7 +27,7 @@ function App() {
   const [spherePos, setSpherePos] = useState([0, 0, 0]);
 
   const fnChangeCustomConcept = async (value: string) => {
-    const { embedding, position } = await embeddingModel.calculateProjection(value);
+    const { position } = await embeddingModel.calculateProjection(value);
 
     setSpherePos(position);
 
