@@ -145,6 +145,14 @@ body {
   box-sizing: border-box; /* Include padding and border in the element's width */
 }
 
+.ConceptRow {
+  padding: 5px;
+}
+
+.ConceptInput {
+  margin-left: 10px;
+}
+
 /* Mobile styles using a media query */
 @media (max-width: 600px) { /* Adjust breakpoint as needed */
   #main-div {
@@ -156,18 +164,20 @@ body {
   }
 
   #right-pane {
-    height: calc(100% - 12rem);
+    height: calc(100% - 10rem);
   }
 
   #left-pane {
-    height: 12rem;
+    height: 10rem;
     padding: 0;
+    border: unset;
+    border-bottom: 1px solid lightgrey;
   }
 
   .PanelConceptCategories {
-    width: calc(100% - 2rem);
+    width: 100%;
     padding: 0;
-    margin: 1rem;
+    /* margin: 1rem; */
     height: 4rem; /* 20% of vertical space */
     margin-bottom: 0;
     margin-top: 2rem;
@@ -179,7 +189,7 @@ body {
     /* Height auto-adjusts based on content */
     padding-bottom: 1rem;
     padding: 0;
-    margin: 1rem;
+    /* margin: 1rem; */
     height: 4rem;
     margin-top: 0;
     margin-bottom: 1rem;
@@ -190,6 +200,7 @@ body {
     /* flex-grow: 1; */
     width: 100%; /* Full width */
     height: unset;
+    border: unset;
   }
 
   .HiddenOnMobile {
@@ -197,13 +208,16 @@ body {
   }
 
   .SelectConcept {
-    max-width: 100%;
+    padding-left: 5%;
+    width: 95%;
+    margin: 0;
   }
 
   .ConceptInput {
     height: 2rem;
     font-size: 20px;
-    width: 90% !important;
+    margin-left: 5% !important;
+    width: 88% !important;
   }
 
   .ItemOpenAiKey {
@@ -220,7 +234,7 @@ body {
 
   .CardHoveredConcept {
       position: absolute; /* Fix position relative to the viewport */
-      bottom: 6rem; /* Align to the top of the viewport */
+      bottom: 4rem; /* Align to the top of the viewport */
       left:50%;
       transform: translateX(-50%);
     }

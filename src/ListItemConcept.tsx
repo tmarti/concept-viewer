@@ -9,7 +9,7 @@ export const ListItemConcept = ({
     disabled: boolean,
 }) => {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', padding: '3px' }}>
+    <div style={{ display: 'flex', alignItems: 'center' }} className="ConceptRow">
         <span
             className="HiddenOnMobile"
             style={{
@@ -21,12 +21,8 @@ export const ListItemConcept = ({
             }}
             title={title||""}
         />
-        &nbsp;
         <input
             className='ConceptInput'
-            style={{
-            width: '180px',
-            }}
             id={inputId}
             value={inputValue}
             name="test"

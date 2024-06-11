@@ -21,10 +21,17 @@ function dist(a: number[], b: number[]) {
 
 function App() {
   let [embeddingModel] = useState(new EmbeddingModel());
-  const [hoveredIndex, setHoveredIndex] = useState(-1);
+  const [hoveredIndex, _setHoveredIndex] = useState(-1);
   const [topIndexes, setTopIndexes] = useState([-1, -1, -1]);
   const [concepts, _setConcepts] = useState([] as ConceptDto[]);
   const [spherePos, setSpherePos] = useState([0, 0, 0]);
+
+  const setHoveredIndex = (value: number) => {
+    if (concepts[value]) {
+      alert(concepts[value].description);
+    }
+    _setHoveredIndex(value);
+  };
 
   const fnChangeCustomConcept = async (value: string) => {
     const { position } = await embeddingModel.calculateProjection(value);
@@ -95,7 +102,7 @@ function App() {
           <Panel3D
             concepts={concepts}
             spherePos={spherePos}
-            onHoverConcept={setHoveredIndex}
+            onHoverConcept={_setHoveredIndex}
             onSelectConcept={setHoveredIndex}/>
         </div>
       </div>
