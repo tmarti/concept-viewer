@@ -1,9 +1,10 @@
 import { ListItemConcept } from "./ListItemConcept";
 
 export const PanelMyConcept = ({
-  onChangeMyConcept,
+  onChangeMyConcept, disabled
 }: {
   onChangeMyConcept: (concept: string) => void,
+  disabled: boolean,
 }) => {
   return (
     <div className='PanelMyConcept'>
@@ -13,6 +14,7 @@ export const PanelMyConcept = ({
             color='black'
             inputId={`prompt-test`}
             onChanged={onChangeMyConcept}
+            disabled={disabled}
           />
         </h2>
         <div style={{textAlign: 'center'}} className="HiddenOnMobile">

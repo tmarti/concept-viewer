@@ -61,7 +61,7 @@
 
 #main-div {
   display: flex;
-  height: 100vh; /* Full viewport height */
+  height: calc(var(--vh, 1vh) * 100); /* Use the --vh custom property */
   width: 100vw; /* Full viewport width */
 }
 
@@ -131,6 +131,15 @@
   margin: 1rem 0;
 }
 
+.select-input-common {
+  font-size: 16px; /* Example to ensure legibility on mobile devices */
+  border: 1px solid #ccc; /* Uniform border style */
+  border-radius: 4px; /* Rounded corners */
+  padding: 8px; /* Padding for better touch interaction */
+  width: 100%; /* Full-width for responsiveness */
+  box-sizing: border-box; /* Include padding and border in the element's width */
+}
+
 /* Mobile styles using a media query */
 @media (max-width: 600px) { /* Adjust breakpoint as needed */
   #main-div {
@@ -157,6 +166,7 @@
     height: 4rem; /* 20% of vertical space */
     margin-bottom: 0;
     margin-top: 2rem;
+    overflow-y: hidden;
   }
 
   .PanelMyConcept {
@@ -193,10 +203,14 @@
 
   .ItemOpenAiKey {
     position: absolute; /* Fix position relative to the viewport */
-    width: 80%; /* Auto width based on content */
-    bottom: 1rem; /* Align to the top of the viewport */
+    width: 100%; /* Auto width based on content */
+    top: calc(var(--vh, 1vh) * 100); /* Align to the top of the viewport */
     left:50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-100%);
+    border-radius: 0;
+    padding: 1rem 0;
+    bottom: unset;
+    right: unset;
   }
 
   .CardHoveredConcept {
@@ -205,5 +219,4 @@
       left:50%;
       transform: translateX(-50%);
     }
-
 }

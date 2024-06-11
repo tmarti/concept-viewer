@@ -58,7 +58,10 @@ export default class EmbeddingModel {
         this.initOpenAi();
     
         if (!this.theUMAP) {
-            return [ 0, 0, 0];
+            return {
+                embedding: [],
+                position: [ 0, 0, 0]
+            };
         }
     
         const embedding = await this.calculateEmbedding(text);
@@ -67,6 +70,6 @@ export default class EmbeddingModel {
             embedding
         ])[0];
     
-        return position;
+        return { embedding, position };
     }
 };

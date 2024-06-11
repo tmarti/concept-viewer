@@ -1,11 +1,12 @@
 export const ListItemConcept = ({
-    color, title, inputId, inputValue, onChanged
+    color, title, inputId, inputValue, onChanged, disabled
 }: {
     color: string,
     title?:string,
     inputId: string,
     inputValue?:string,
     onChanged?:(newValue: string) => void,
+    disabled: boolean,
 }) => {
   return (
     <div style={{ display: 'flex', alignItems: 'center', padding: '3px' }}>
@@ -30,6 +31,7 @@ export const ListItemConcept = ({
             value={inputValue}
             name="test"
             readOnly={!!inputValue}
+            disabled={disabled}
             placeholder=" Type your concept..."
             onKeyDown={e => {
                 if (onChanged && e.key == 'Enter') {

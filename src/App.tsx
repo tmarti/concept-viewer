@@ -10,7 +10,13 @@ import EmbeddingModel from './llm';
 import { ItemOpenAiKey } from './ItemOpenAiKey';
 
 function dist(a: number[], b: number[]) {
-  return Math.hypot(a[0]-b[0], a[1]-b[1], a[2]-b[2]);
+  let sqDist = 0;
+
+  for (let i = 0; i < a.length; i++) {
+    sqDist += Math.pow(a[i] - b[i], 2);
+  }
+
+  return Math.sqrt(sqDist);
 }
 
 function App() {
@@ -21,7 +27,7 @@ function App() {
   const [spherePos, setSpherePos] = useState([0, 0, 0]);
 
   const fnChangeCustomConcept = async (value: string) => {
-    const position = await embeddingModel.calculateProjection(value);
+    const { embedding, position } = await embeddingModel.calculateProjection(value);
 
     setSpherePos(position);
 
@@ -58,6 +64,17 @@ function App() {
     _setConcepts(c.slice());
   };
 
+  function adjustHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+  
+  // Call the function to set the variable initially
+  adjustHeight();
+  
+  // Re-calculate on window resize
+  window.addEventListener('resize', adjustHeight);
+
   return (
     <>
       <ItemOpenAiKey/>
@@ -71,6 +88,7 @@ function App() {
           />
           <PanelMyConcept
             onChangeMyConcept={fnChangeCustomConcept}
+            disabled={concepts.length == 0}
           />
         </div>
         <div id="right-pane">
