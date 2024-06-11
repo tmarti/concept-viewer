@@ -68,6 +68,7 @@ body {
   display: flex;
   height: calc(var(--vh, 1vh) * 100); /* Use the --vh custom property */
   width: 100vw; /* Full viewport width */
+  overflow: hidden;
 }
 
 #left-pane {
@@ -164,7 +165,7 @@ body {
   }
 
   #right-pane {
-    height: calc(100% - 10rem);
+    height: calc(100% - 13rem);
   }
 
   #left-pane {
