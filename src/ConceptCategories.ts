@@ -75,6 +75,17 @@ const social_areas = [
     {label:"Judicial frameworks", description:"Legal System - \"Judicial frameworks.\" The legal system comprises the laws and regulations, as well as the processes and infrastructure for enforcing them, governing the behavior of the populace. It ensures order, resolves disputes, and maintains social justice." },
 ];
 
+const vices_of_the_spirit = [
+    {label:"Excessive drinking", description:"Alcoholism - \"Excessive drinking.\" This is a chronic disease characterized by uncontrolled drinking and preoccupation with alcohol. Alcoholism is harmful to the drinker's health, relationships, and social standing." },
+    {label:"Substance dependence", description:"Drug Addiction - \"Substance dependence.\" This vice involves the compulsive use of drugs despite harmful consequences. It is characterized by neurological changes and behavioral responses that can include a physical and psychological need for the drug." },
+    {label:"Compulsive betting", description:"Gambling Addiction - \"Compulsive betting.\" This addiction is marked by an uncontrollable urge to gamble, leading to severe personal and social consequences. It often results in financial disaster, strained relationships, and legal problems." },
+    {label:"Hypersexual behavior", description:"Sex Addiction - \"Hypersexual behavior.\" This involves persistent and escalating patterns of sexual behavior acted out despite increasing negative consequences to one's physical and mental health, personal relationships, and overall life." },
+    {label:"Overindulgence", description:"Gluttony - \"Overindulgence.\" Traditionally one of the seven deadly sins, gluttony involves excessive eating or consuming more than is required for health, often leading to physical ailments and emotional distress." },
+    {label:"Chronic laziness", description:"Sloth - \"Chronic laziness.\" This vice is characterized by an excessive lack of motivation to engage in necessary and beneficial activities, leading to personal neglect and inefficiency in life's duties." },
+    {label:"Extreme anger", description:"Wrath - \"Extreme anger.\" Wrath involves feelings of intense anger and hatred that can become destructive, leading to physical violence, verbal abuse, and other aggressive behaviors that destroy relationships and personal peace." },
+    {label:"Jealous resentment", description:"Envy - \"Jealous resentment.\" This vice is marked by an insatiable desire for someone else's traits, status, abilities, or situation, leading to discontentment and ill-will towards others, as well as unhappiness with one's own circumstances." },
+];
+
 export interface ConceptCategoriesDto {
     [key:string]: {
         label: string,
@@ -90,6 +101,7 @@ const tmp = {
     "Social rights": social_rights,
     "Abuse forms": abuse_forms,
     "Social areas": social_areas,
+    "Vices": vices_of_the_spirit,
 };
 
 const all = [] as {label:string, description: string}[];
@@ -104,5 +116,6 @@ export const ConceptCategories = {
   "Social rights": social_rights,
   "Abuse forms": abuse_forms,
   "Social areas": social_areas,
+  "Vices": vices_of_the_spirit,
   "All categories": all,
 } as ConceptCategoriesDto;
