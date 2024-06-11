@@ -62,6 +62,7 @@ export const PanelConceptCategories = ({
                   inputId={`prompt-${x.index}`}
                   title={x.description}
                   key={`prompt-${x.index}`}
+                  disabled={true}
                 />
             ))}
         </h2>
